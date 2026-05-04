@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Knowledge Search &amp; Application Hub</title><style>
+:root{
+  --bbi-navy:#1f3b57;
+  --bbi-navy-2:#233f5d;
+  --bbi-blue:#2f5f86;
+  --bbi-border:#d7dde4;
+  --bbi-grid:#eef2f5;
+  --bbi-canvas:#ffffff;
+  --bbi-bg:#f3f5f7;
+  --bbi-text:#1f2933;
+  --bbi-muted:#607080;
+  --bbi-green:#4c9f38;
+  --bbi-green-bg:#e7f3e4;
+  --bbi-red:#c0372b;
+  --bbi-red-bg:#f8e4e1;
+  --bbi-amber:#d9a629;
+  --bbi-amber-bg:#fbf2d7;
+  --bbi-purple:#6b5ca5;
+  --bbi-shadow:0 1px 4px rgba(25,45,65,.12);
+  --radius:4px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;min-width:220px;max-width:900px;margin:0;padding:0;overflow-x:hidden}
+body{
+  font-family:"Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  background:transparent;
+  color:var(--bbi-text);
+  font-size:12px;
+  line-height:1.35;
+}
+
+.report{
+  width:100%;
+  max-width:900px;
+  background:var(--bbi-canvas);
+  border:1px solid var(--bbi-border);
+  overflow:hidden;
+}
+
+.topbar{
+  background:var(--bbi-navy);
+  color:white;
+  padding:10px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.brand{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+}
+.brand-title{
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:.1px;
+}
+.brand-sub{
+  font-size:10px;
+  opacity:.82;
+}
+.period{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:3px;
+  padding:5px 8px;
+  font-size:10px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.toolbar{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  padding:8px;
+  background:#f8fafc;
+  border-bottom:1px solid var(--bbi-border);
+}
+.slicer{
+  border:1px solid #c8d0d8;
+  background:#fff;
+  min-height:34px;
+  border-radius:2px;
+  padding:5px 7px;
+}
+.slicer-label{
+  font-size:9px;
+  color:#66788a;
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:2px;
+}
+.slicer-value{
+  font-size:11px;
+  color:#182434;
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.chev{font-size:10px;color:#8896a5}
+
+.page{
+  padding:8px;
+  background:#fff;
+}
+
+.section-title{
+  background:var(--bbi-navy);
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  padding:6px 8px;
+  border-radius:2px 2px 0 0;
+  margin-top:8px;
+}
+.section-title:first-child{margin-top:0}
+
+.kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin:6px 0 8px;
+}
+.kpi{
+  background:#fff;
+  border:1px solid var(--bbi-border);
+  box-shadow:var(--bbi-shadow);
+  min-height:64px;
+  padding:7px 8px;
+  border-radius:2px;
+  position:relative;
+}
+.kpi:before{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:4px;
+  background:var(--bbi-blue);
+}
+.kpi.good:before{background:var(--bbi-green)}
+.kpi.warn:before{background:var(--bbi-amber)}
+.kpi.bad:before{background:var(--bbi-red)}
+.kpi-label{
+  font-size:9px;
+  color:var(--bbi-muted);
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.kpi-value{
+  font-size:22px;
+  font-weight:700;
+  color:#12263a;
+  line-height:1;
+  letter-spacing:-.5px;
+}
+.kpi.good .kpi-value{color:var(--bbi-green)}
+.kpi.warn .kpi-value{color:#b17c10}
+.kpi.bad .kpi-value{color:var(--bbi-red)}
+.kpi-foot{
+  margin-top:5px;
+  font-size:9px;
+  color:var(--bbi-muted);
+}
+
+.two-col{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:8px;
+}
+.card{
+  border:1px solid var(--bbi-border);
+  background:#fff;
+  border-radius:2px;
+  box-shadow:var(--bbi-shadow);
+  overflow:hidden;
+}
+.card-head{
+  background:#edf2f6;
+  color:#1b334c;
+  font-size:11px;
+  font-weight:700;
+  padding:6px 8px;
+  border-bottom:1px solid var(--bbi-border);
+}
+.card-body{padding:8px}
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:10.5px;
+}
+.table th{
+  text-align:left;
+  background:#eef2f6;
+  color:#405569;
+  font-size:9px;
+  text-transform:uppercase;
+  padding:5px 6px;
+  border-bottom:1px solid var(--bbi-border);
+}
+.table td{
+  padding:6px;
+  border-bottom:1px solid #edf1f4;
+}
+.table tr:last-child td{border-bottom:0}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.status{
+  display:inline-block;
+  border-radius:2px;
+  padding:2px 6px;
+  font-size:9px;
+  font-weight:700;
+}
+.status.good{background:var(--bbi-green-bg);color:var(--bbi-green)}
+.status.warn{background:var(--bbi-amber-bg);color:#9b6f00}
+.status.bad{background:var(--bbi-red-bg);color:var(--bbi-red)}
+
+.matrix{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+}
+.mini{
+  border:1px solid var(--bbi-border);
+  border-radius:2px;
+  padding:7px;
+  background:#fff;
+}
+.mini-title{
+  font-size:10px;
+  color:var(--bbi-muted);
+  font-weight:700;
+}
+.mini-value{
+  font-size:20px;
+  font-weight:700;
+  margin-top:5px;
+}
+.mini.good{background:var(--bbi-green-bg);border-color:#b8d8b1}
+.mini.warn{background:var(--bbi-amber-bg);border-color:#e8d58b}
+.mini.bad{background:var(--bbi-red-bg);border-color:#ebb5b0}
+
+.chart{
+  height:150px;
+  border-left:1px solid #d7dde4;
+  border-bottom:1px solid #d7dde4;
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+  padding:12px 8px 0;
+  background:
+    linear-gradient(to top, rgba(215,221,228,.55) 1px, transparent 1px) 0 0/100% 30px;
+}
+.bar{
+  flex:1;
+  background:var(--bbi-blue);
+  min-width:10px;
+  position:relative;
+  border-radius:2px 2px 0 0;
+}
+.bar.good{background:var(--bbi-green)}
+.bar.warn{background:var(--bbi-amber)}
+.bar.bad{background:var(--bbi-red)}
+.bar span{
+  position:absolute;
+  bottom:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:9px;
+  color:#5d6d7d;
+}
+.legend{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  font-size:10px;
+  color:var(--bbi-muted);
+  margin-top:22px;
+}
+.dot{
+  display:inline-block;
+  width:9px;height:9px;
+  border-radius:50%;
+  margin-right:4px;
+  vertical-align:-1px;
+}
+.dot.green{background:var(--bbi-green)}
+.dot.amber{background:var(--bbi-amber)}
+.dot.red{background:var(--bbi-red)}
+.dot.blue{background:var(--bbi-blue)}
+
+.action-panel{
+  margin-top:8px;
+  border:1px solid var(--bbi-border);
+  background:#fbfcfd;
+  border-left:5px solid var(--bbi-amber);
+  padding:8px;
+  border-radius:2px;
+}
+.action-panel.bad{border-left-color:var(--bbi-red)}
+.action-panel.good{border-left-color:var(--bbi-green)}
+.action-title{
+  font-size:11px;
+  font-weight:700;
+  color:#1d3349;
+  margin-bottom:4px;
+}
+.action-text{
+  font-size:10.5px;
+  color:var(--bbi-muted);
+}
+.btn-row{
+  display:flex;
+  gap:6px;
+  margin-top:8px;
+}
+.btn{
+  flex:1;
+  text-align:center;
+  padding:7px 8px;
+  border-radius:3px;
+  font-size:10px;
+  font-weight:700;
+  text-decoration:none;
+  color:#fff;
+  background:var(--bbi-navy);
+}
+.btn.alt{
+  background:#fff;
+  color:var(--bbi-navy);
+  border:1px solid var(--bbi-border);
+}
+
+.tile-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:8px;
+}
+.app-tile{
+  background:#fff;
+  border:1px solid var(--bbi-border);
+  border-radius:3px;
+  min-height:74px;
+  padding:9px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:var(--bbi-shadow);
+}
+.app-icon{
+  width:26px;height:26px;
+  border-radius:4px;
+  background:var(--bbi-navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+}
+.app-title{
+  font-size:11px;
+  font-weight:700;
+  color:#1c3046;
+}
+.app-sub{
+  font-size:9.5px;
+  color:var(--bbi-muted);
+}
+
+.search{
+  border:1px solid #bfc9d3;
+  border-radius:2px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  padding:0 9px;
+  color:#526578;
+  font-size:12px;
+  background:#fff;
+  margin-bottom:8px;
+}
+.result{
+  border:1px solid var(--bbi-border);
+  border-radius:2px;
+  padding:8px;
+  margin-top:6px;
+}
+.result-title{font-size:11px;font-weight:700}
+.result-sub{font-size:10px;color:var(--bbi-muted);margin-top:2px}
+
+.footer{
+  padding:7px 8px;
+  color:#7b8794;
+  background:#f8fafc;
+  border-top:1px solid var(--bbi-border);
+  font-size:9px;
+  display:flex;
+  justify-content:space-between;
+}
+
+@media(max-width:620px){
+  .toolbar{grid-template-columns:repeat(2,1fr)}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .two-col{grid-template-columns:1fr}
+  .tile-grid{grid-template-columns:1fr 1fr}
+  .grid.three,.matrix{grid-template-columns:1fr}
+}
+@media(max-width:380px){
+  .toolbar,.kpi-grid,.tile-grid{grid-template-columns:1fr}
+  .topbar{align-items:flex-start;flex-direction:column}
+  .period{width:100%}
+}
+</style></head>
+<body>
+<div class="report">
+  <div class="topbar">
+    <div class="brand"><div class="brand-title">Knowledge Search &amp; Application Hub</div><div class="brand-sub">Search PDFs, Rise courses, policy content, and launch SSO apps</div></div>
+    <div class="period">FY24 P10</div>
+  </div>
+  <div class="toolbar">
+    <div class="slicer"><div class="slicer-label">Concept</div><div class="slicer-value">Bloomin' Brands <span class="chev">▾</span></div></div>
+    <div class="slicer"><div class="slicer-label">Region</div><div class="slicer-value">Columbus / Cleveland <span class="chev">▾</span></div></div>
+    <div class="slicer"><div class="slicer-label">Restaurant</div><div class="slicer-value">All <span class="chev">▾</span></div></div>
+    <div class="slicer"><div class="slicer-label">Period</div><div class="slicer-value">FY24 P10 <span class="chev">▾</span></div></div>
+  </div>
+  <div class="page">
+<div class="section-title">Easy Access to Applications and Information</div>
+<div class="search">🔎 Search: BOH labor variance procedure</div>
+<div class="two-col">
+  <div class="card"><div class="card-head">Search Results</div><div class="card-body">
+    <div class="result"><div class="result-title">BOH Labor Optimization SOP.pdf</div><div class="result-sub">Document repository · policy and procedure PDF</div></div>
+    <div class="result"><div class="result-title">Labor Forecasting Micro-Course</div><div class="result-sub">Rise course · recommended for restaurants outside KPI threshold</div></div>
+    <div class="result"><div class="result-title">Scheduling Manager Checklist</div><div class="result-sub">Knowledge article · manager reference</div></div>
+    <div class="action-panel good"><div class="action-title">Context-aware recommendation</div><div class="action-text">Because BOH labor variance is unfavorable, surface the SOP and push training directly from the KPI card.</div><div class="btn-row"><a class="btn" href="#">Open SOP</a><a class="btn alt" href="#">Push Training</a></div></div>
+  </div></div>
+  <div class="card"><div class="card-head">SSO Application Tiles</div><div class="card-body">
+    <div class="tile-grid">
+      <div class="app-tile"><div class="app-icon">📊</div><div><div class="app-title">Power BI</div><div class="app-sub">KPI details</div></div></div>
+      <div class="app-tile"><div class="app-icon">🧾</div><div><div class="app-title">Food Order</div><div class="app-sub">Order portal</div></div></div>
+      <div class="app-tile"><div class="app-icon">🎓</div><div><div class="app-title">Training</div><div class="app-sub">Rise courses</div></div></div>
+      <div class="app-tile"><div class="app-icon">🛠️</div><div><div class="app-title">Incidents</div><div class="app-sub">Ticket status</div></div></div>
+      <div class="app-tile"><div class="app-icon">📁</div><div><div class="app-title">Policies</div><div class="app-sub">PDF library</div></div></div>
+      <div class="app-tile"><div class="app-icon">🔔</div><div><div class="app-title">Comms</div><div class="app-sub">Notifications</div></div></div>
+    </div>
+  </div></div>
+</div>
+</div>
+  <div class="footer"><span>Power BI style report embedded in WorkJam</span><span>SSO / EDW / Power BI</span></div>
+</div>
+</body></html>

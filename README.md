@@ -1,1 +1,1 @@
-Restaurant Portal WorkJam Widgets generated from uploaded Restaurant Portal PDF. Upload all files to the same GitHub Pages folder. Use direct widget URLs inside WorkJam.
+Power BI-style WorkJam HTML widgets based on the Bloomin Restaurant Portal PDF. Upload all files to one GitHub Pages folder.
