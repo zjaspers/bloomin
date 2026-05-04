@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Restaurant KPI Landing</title><style>
+:root{
+  --wj-navy:#2B3990;--wj-teal:#07A387;--wj-gold:#C3A427;--wj-light:#A5B0D0;
+  --bg:#F2F4F8;--surface:#FFFFFF;--surface-alt:#F7F9FC;--border:#E2E7F0;
+  --text-primary:#1A1A2E;--text-sec:#4B5373;--text-muted:#8892AC;
+  --green:#07A387;--green-bg:#D0F0EA;--amber:#C3A427;--amber-bg:#FDF3CE;--red:#C0392B;--red-bg:#FAD4D0;
+  --shadow-sm:0 1px 4px rgba(43,57,144,.07);--shadow-md:0 4px 16px rgba(43,57,144,.10);
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-width:220px;max-width:900px;width:100%;margin:0;padding:0;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:transparent;color:var(--text-primary);line-height:1.45}
+.widget{width:100%;min-width:220px;max-width:900px;background:var(--surface);overflow:hidden}
+.hero{background:var(--wj-navy);color:white;padding:14px 16px}
+.hero.teal{background:var(--wj-teal)}.hero.gold{background:var(--wj-gold)}.hero.red{background:var(--red)}
+.eyebrow{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.75;margin-bottom:4px}
+h1{font-size:18px;font-weight:800;letter-spacing:-.4px;line-height:1.15}
+.sub{font-size:12px;color:rgba(255,255,255,.85);margin-top:4px}
+.section{padding:14px;background:var(--surface)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.grid.three{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--surface);border:2px solid var(--border);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow-sm)}
+.card.green{background:var(--green-bg);border-color:var(--green)}.card.amber{background:var(--amber-bg);border-color:var(--amber)}.card.red{background:var(--red-bg);border-color:var(--red)}
+.value{font-size:28px;font-weight:800;letter-spacing:-1px;line-height:1;color:var(--wj-navy)}
+.green .value,.value.green{color:var(--green)}.amber .value,.value.amber{color:var(--amber)}.red .value,.value.red{color:var(--red)}
+.label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--text-sec);margin-top:5px}
+.note{font-size:12px;color:var(--text-sec);line-height:1.45;margin-top:8px}
+.insight{border-left:4px solid var(--wj-teal);background:var(--surface-alt);border-radius:8px;padding:12px;margin-top:10px;font-size:12px;color:var(--text-sec);font-weight:600}
+.insight.red{border-left-color:var(--red)}.insight.amber{border-left-color:var(--amber)}
+.action{display:flex;gap:8px;margin-top:10px}
+.btn{flex:1;text-align:center;border:0;border-radius:8px;padding:10px;background:var(--wj-navy);color:white;font-weight:800;font-size:11px;text-transform:uppercase;text-decoration:none}
+.btn.secondary{background:var(--surface);color:var(--wj-navy);border:2px solid var(--border)}
+.list{display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px}
+.row-title{font-size:12px;font-weight:800}.row-sub{font-size:11px;color:var(--text-sec);margin-top:2px}.pill{font-size:10px;font-weight:800;border-radius:999px;padding:4px 8px;white-space:nowrap}
+.pill.green{background:var(--green-bg);color:var(--green)}.pill.amber{background:var(--amber-bg);color:#7a5f00}.pill.red{background:var(--red-bg);color:var(--red)}
+.progress{height:7px;background:var(--surface-alt);border-radius:99px;overflow:hidden;margin-top:8px}.bar{height:100%;background:var(--wj-teal);border-radius:99px}.bar.amber{background:var(--amber)}.bar.red{background:var(--red)}
+.footer{padding:12px 14px;background:var(--surface-alt);border-top:1px solid var(--border);font-size:11px;color:var(--text-muted);font-weight:700}
+@media(max-width:480px){.grid,.grid.three{grid-template-columns:1fr}.hero{padding:12px}.section{padding:12px}.value{font-size:25px}}
+</style></head>
+<body><div class="widget"><div class="hero "><div class="eyebrow">Power BI + EDW</div><h1>Restaurant KPI Landing</h1><div class="sub">Integrated view of performance and areas needing attention.</div></div>
+<div class="section">
+  <div class="grid">
+    <div class="card amber"><div class="value">+4.8%</div><div class="label">BOH Labor Variance</div></div>
+    <div class="card green"><div class="value">96%</div><div class="label">Line Check Compliance</div></div>
+    <div class="card red"><div class="value">3</div><div class="label">Restaurants Need Action</div></div>
+    <div class="card"><div class="value">$18.7K</div><div class="label">Sales Above Plan</div></div>
+  </div>
+  <div class="insight amber"><strong>Actionable insight:</strong> BOH labor variance is outside target. Review labor deployment and push refresher training to impacted restaurants.</div>
+  <div class="action"><a class="btn" href="restaurant-labor-variance.html">Review Labor</a><a class="btn secondary" href="restaurant-knowledge-search.html">Search SOP</a></div>
+</div><div class="footer">Sources: Power BI / EDW • Persona: Managing Partner / JVP</div></div></body></html>
