@@ -1,1 +1,1 @@
-Power BI-style WorkJam HTML widgets based on the Bloomin Restaurant Portal PDF. Upload all files to one GitHub Pages folder.
+Use summary-*.html as WorkJam home-screen widget URLs. Use powerbi-*.html or steak-satisfaction-widget.html as the full-screen/open URLs.
