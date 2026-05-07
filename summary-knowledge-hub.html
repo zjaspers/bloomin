@@ -1,2 +1,156 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Knowledge Search &amp; App Hub Summary</title><style>:root{--navy:#1f3b57;--border:#d7dde4;--text:#1f2933;--muted:#607080;--green:#4c9f38;--amber:#d9a629;--red:#c0372b;--blue:#2f5f86}
-*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;min-width:220px;max-width:900px;margin:0;padding:0;overflow:hidden}body{font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:transparent;color:var(--text);font-size:12px}.summary-widget{width:100%;background:#fff;border:1px solid var(--border);overflow:hidden}.section-title{background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:6px 8px}.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:6px;background:#fff}.kpi{background:#fff;border:1px solid var(--border);box-shadow:0 1px 4px rgba(25,45,65,.12);min-height:62px;padding:7px 8px;position:relative}.kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}.kpi.good:before{background:var(--green)}.kpi.warn:before{background:var(--amber)}.kpi.bad:before{background:var(--red)}.kpi-label{font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.kpi-value{font-size:22px;font-weight:700;color:#12263a;line-height:1;letter-spacing:-.5px}.kpi.good .kpi-value{color:var(--green)}.kpi.warn .kpi-value{color:#b17c10}.kpi.bad .kpi-value{color:var(--red)}.kpi-foot{margin-top:5px;font-size:9px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@media(max-width:520px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:280px){.kpi-grid{grid-template-columns:1fr}.kpi-value{font-size:20px}}</style></head><body><div class="summary-widget"><div class="section-title">Knowledge Search &amp; App Hub</div><div class="kpi-grid"><div class="kpi good"><div class="kpi-label">SOP RESULTS</div><div class="kpi-value">3</div><div class="kpi-foot">Relevant assets</div></div><div class="kpi warn"><div class="kpi-label">TRAINING COURSE</div><div class="kpi-value">8m</div><div class="kpi-foot">Recommended</div></div><div class="kpi "><div class="kpi-label">SSO TILES</div><div class="kpi-value">6</div><div class="kpi-foot">Apps available</div></div><div class="kpi good"><div class="kpi-label">PUSH TRAINING</div><div class="kpi-value">Ready</div><div class="kpi-foot">From KPI context</div></div></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Search &amp; App Hub Summary</title>
+<style>
+:root{
+  --navy:#1f3b57;
+  --border:#d7dde4;
+  --text:#1f2933;
+  --muted:#607080;
+  --green:#4c9f38;
+  --amber:#d9a629;
+  --red:#c0372b;
+  --blue:#2f5f86;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  width:100%;
+  height:100%;
+  min-width:220px;
+  max-width:900px;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  background:transparent;
+}
+body{
+  font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;
+  color:var(--text);
+  font-size:12px;
+}
+.summary-widget{
+  width:100%;
+  height:100vh;
+  min-height:100%;
+  background:transparent;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.section-title{
+  background:var(--navy);
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  padding:6px 8px;
+  line-height:1;
+  flex:0 0 auto;
+}
+.kpi-grid{
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  padding:6px;
+  background:transparent;
+}
+.kpi{
+  background:#fff;
+  border:1px solid var(--border);
+  box-shadow:0 1px 4px rgba(25,45,65,.12);
+  padding:7px 8px;
+  position:relative;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  overflow:hidden;
+}
+.kpi:before{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:4px;
+  background:var(--blue);
+}
+.kpi.good:before{background:var(--green)}
+.kpi.warn:before{background:var(--amber)}
+.kpi.bad:before{background:var(--red)}
+.kpi-label{
+  font-size:9px;
+  color:var(--muted);
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:5px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.kpi-value{
+  font-size:22px;
+  font-weight:700;
+  color:#12263a;
+  line-height:1;
+  letter-spacing:-.5px;
+}
+.kpi.good .kpi-value{color:var(--green)}
+.kpi.warn .kpi-value{color:#b17c10}
+.kpi.bad .kpi-value{color:var(--red)}
+.kpi-foot{
+  margin-top:5px;
+  font-size:9px;
+  color:var(--muted);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+@media(max-width:520px){
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:280px){
+  .kpi-grid{grid-template-columns:1fr}
+  .kpi-value{font-size:20px}
+  .kpi-label,.kpi-foot{font-size:8.5px}
+}
+/* If WorkJam gives a very short frame, keep it tight. */
+@media(max-height:105px){
+  .section-title{padding:5px 8px;font-size:11px}
+  .kpi-grid{padding:5px;gap:5px}
+  .kpi{padding:5px 7px}
+  .kpi-value{font-size:19px}
+  .kpi-foot{display:none}
+}
+</style>
+</head>
+<body>
+<div class="summary-widget">
+  <div class="section-title">Knowledge Search &amp; App Hub</div>
+  <div class="kpi-grid">
+    <div class="kpi good">
+      <div class="kpi-label">SOP RESULTS</div>
+      <div class="kpi-value">3</div>
+      <div class="kpi-foot">Relevant assets</div>
+    </div>
+    <div class="kpi warn">
+      <div class="kpi-label">TRAINING COURSE</div>
+      <div class="kpi-value">8m</div>
+      <div class="kpi-foot">Recommended</div>
+    </div>
+    <div class="kpi ">
+      <div class="kpi-label">SSO TILES</div>
+      <div class="kpi-value">6</div>
+      <div class="kpi-foot">Apps available</div>
+    </div>
+    <div class="kpi good">
+      <div class="kpi-label">PUSH TRAINING</div>
+      <div class="kpi-value">Ready</div>
+      <div class="kpi-foot">From KPI context</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
